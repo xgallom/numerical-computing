@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/zahorack/projects/c_projects_linux/numerical-computing/examples/include/lecture_1.h
+
+/home/zahorack/projects/c_projects_linux/numerical-computing/examples/include/project_1.h
+
+/home/zahorack/projects/c_projects_linux/numerical-computing/main.cpp
+examples/include/lecture_1.h
+/home/zahorack/projects/c_projects_linux/numerical-computing/examples/include/lecture_1.h
+examples/include/project_1.h
+/home/zahorack/projects/c_projects_linux/numerical-computing/examples/include/project_1.h
+

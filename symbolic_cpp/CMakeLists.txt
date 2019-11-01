@@ -1,0 +1,2 @@
+add_library(symbolic_cpp INTERFACE)
+target_include_directories(symbolic_cpp INTERFACE include)
