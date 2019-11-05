@@ -197,7 +197,7 @@ namespace examples {
 
         void LevenbergMarquardt()
         {
-            
+
             float alfa= 8;
             float c   = 4;
             Point point = StartPoint;

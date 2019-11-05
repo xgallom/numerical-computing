@@ -5,6 +5,7 @@
 
 #include "examples/include/lecture_1.h"
 #include "examples/include/project_1.h"
+#include "examples/include/project_2.h"
 
 int main() {
 
@@ -12,8 +13,11 @@ int main() {
 //    examples::lectureOne::taskTwo();
 //    examples::lectureOne::taskThree();
 
-    examples::projectOne::NewtonRaphson();
+//    examples::projectOne::NewtonRaphson();
 //    examples::projectOne::LevenbergMarquardt();
+
+    examples::projectTwo::test();
+
 
     return 0;
 }
