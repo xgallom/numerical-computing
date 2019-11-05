@@ -1,0 +1,8 @@
+//
+// Created by zahorack on 11/5/19.
+//
+
+#ifndef NUMERICAL_COMPUTING_POINT_H
+#define NUMERICAL_COMPUTING_POINT_H
+
+#endif //NUMERICAL_COMPUTING_POINT_H

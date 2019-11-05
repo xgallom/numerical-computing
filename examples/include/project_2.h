@@ -1,0 +1,8 @@
+//
+// Created by zahorack on 11/5/19.
+//
+
+#ifndef NUMERICAL_COMPUTING_PROJECT_2_H
+#define NUMERICAL_COMPUTING_PROJECT_2_H
+
+#endif //NUMERICAL_COMPUTING_PROJECT_2_H
