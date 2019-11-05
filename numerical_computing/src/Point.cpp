@@ -2,7 +2,7 @@
 // Created by zahorack on 11/5/19.
 //
 
-#include "include/Point.h"
+#include "Point.h"
 
 void Point::operator=(Symbolic sym) {
     if(sym.columns() == 2) {
@@ -28,5 +28,4 @@ void Point::operator=(Point point) {
         x = static_cast<double>(matrix.column(0));
         y = static_cast<double>(matrix.column(1));
     }
-
 }

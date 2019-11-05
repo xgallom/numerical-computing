@@ -1,0 +1,2 @@
+add_library(gnuplot_iostream INTERFACE)
+target_include_directories(gnuplot_iostream INTERFACE include)

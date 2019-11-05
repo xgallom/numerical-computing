@@ -13,13 +13,12 @@
 #define GNUPLOT_ENABLE_PTY
 #include "gnuplot-iostream.h"
 
-
-#include "../../include/Function.h"
+#include "Function.h"
 
 namespace examples {
     namespace projectTwo {
-
-        void test(){
+        void test()
+        {
             cout<<"projectTwo";
 
             static const Symbolic x("x"), y("y");
@@ -27,6 +26,5 @@ namespace examples {
 
             Function func(F, 2);
         }
-
     }
 }

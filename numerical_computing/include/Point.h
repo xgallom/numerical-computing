@@ -5,7 +5,6 @@
 #ifndef NUMERICAL_COMPUTING_POINT_H
 #define NUMERICAL_COMPUTING_POINT_H
 
-#include <symbolic/symbolic.h>
 #include "symbolicc++.h"
 
 class Point {

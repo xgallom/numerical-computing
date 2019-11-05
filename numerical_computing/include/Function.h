@@ -5,8 +5,6 @@
 #ifndef NUMERICAL_COMPUTING_FUNCTION_H
 #define NUMERICAL_COMPUTING_FUNCTION_H
 
-#include <symbolic/symbolic.h>
-#include "symbolicc++.h"
 #include "Point.h"
 
 class Function {
@@ -16,7 +14,6 @@ public:
     Function(const Symbolic f, int n);
     ~Function();
 
-
     Symbolic value();
     Symbolic value(Point);
 
@@ -25,7 +22,6 @@ public:
 
     Symbolic hessian();
     Symbolic hessian(Point);
-
 };
 
 #endif //NUMERICAL_COMPUTING_FUNCTION_H
