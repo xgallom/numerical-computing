@@ -1,6 +1,0 @@
-/home/zahorack/.local/clion/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/zahorack/projects/c_projects_linux/numerical-computing
--- Configuring done
-WARNING: Target "numerical_computing" requests linking to directory "/home/zahorack/projects/c_projects_linux/numerical-computing/gnuplot-iostream".  Targets may link only to libraries.  CMake is dropping the item.
-WARNING: Target "examples" requests linking to directory "/home/zahorack/projects/c_projects_linux/numerical-computing/gnuplot-iostream".  Targets may link only to libraries.  CMake is dropping the item.
--- Generating done
--- Build files have been written to: /home/zahorack/projects/c_projects_linux/numerical-computing/cmake-build-debug

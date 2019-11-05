@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/numerical_computing.dir/main.cpp.o  -o numerical_computing examples/libexamples.a /usr/lib64/libboost_iostreams.so.1.71.0 /usr/lib64/libboost_system.so.1.71.0 /usr/lib64/libboost_filesystem.so.1.71.0 
