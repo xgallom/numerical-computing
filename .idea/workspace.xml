@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="numerical_computing" targetName="examples" />
       <config projectName="numerical_computing" targetName="numerical_computing" />
+      <config projectName="numerical_computing" targetName="examples" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -14,6 +14,16 @@
   <component name="ChangeListManager">
     <list default="true" id="1725b1db-0770-4704-9a32-031537c7f0b7" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/gnuplot-iostream/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/numerical_computing.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/numerical_computing.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/examples/CMakeFiles/examples.dir/src/project_1.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/examples/CMakeFiles/examples.dir/src/project_1.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/examples/libexamples.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/examples/libexamples.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/numerical_computing" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/numerical_computing" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/include/project_1.h" beforeDir="false" afterPath="$PROJECT_DIR$/examples/include/project_1.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/src/project_1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/examples/src/project_1.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gnuplot-iostream" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot-iostream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,13 +36,14 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/gnuplot-iostream" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectId" id="1T2BvHuisTfA7IJnyywex5l56JW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
   <component name="RunDashboard">
@@ -74,7 +85,12 @@
       <option name="presentableId" value="Default" />
       <updated>1572648538147</updated>
       <workItem from="1572648539943" duration="418000" />
-      <workItem from="1572648984527" duration="336000" />
+      <workItem from="1572648984527" duration="1020000" />
+      <workItem from="1572709266324" duration="597000" />
+      <workItem from="1572871963655" duration="895000" />
+      <workItem from="1572945471224" duration="1490000" />
+      <workItem from="1572963607094" duration="4340000" />
+      <workItem from="1572969865580" duration="3292000" />
     </task>
     <servers />
   </component>

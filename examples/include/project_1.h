@@ -23,6 +23,7 @@ namespace examples {
     namespace projectOne {
 
         void NewtonRaphson();
+        void LevenbergMarquardt();
     }
 }
 #endif //OPM_PROJECT_1_H

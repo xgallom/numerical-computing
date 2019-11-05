@@ -33,6 +33,33 @@ struct Point {
     double x;
     double y;
     Symbolic matrix;
+
+    void operator=(Symbolic sym) {
+        if(sym.columns() == 2) {
+            matrix = sym;
+            x = static_cast<double>(matrix.column(0));
+            y = static_cast<double>(matrix.column(1));
+        }
+        else if(sym.rows() == 2) {
+            matrix = sym.transpose();
+            x = static_cast<double>(matrix.column(0));
+            y = static_cast<double>(matrix.column(1));
+        }
+    }
+
+    void operator=(Point point) {
+        if(point.matrix.columns() == 2) {
+            matrix = point.matrix;
+            x = static_cast<double>(matrix.column(0));
+            y = static_cast<double>(matrix.column(1));
+        }
+        else if(point.matrix.rows() == 2) {
+            matrix = point.matrix.transpose();
+            x = static_cast<double>(matrix.column(0));
+            y = static_cast<double>(matrix.column(1));
+        }
+
+    }
 };
 
 struct Gradient {
@@ -54,29 +81,22 @@ namespace examples {
 
         static const float Precision   = 0.001;
         static const float MaxCycleIterations = 50;
-        static const float alfa= 8;
-        static const float c   = 4;
-
         static const Symbolic StartPointX(1.5), StartPointY(5.0);
-        Point StartPoint = {
+        const Point StartPoint = {
                 .x = 1.5,
                 .y = 5,
                 .matrix = (StartPointX, StartPointY),
         };
 
-        static Symbolic x("x"), y("y");
-        static Symbolic F;
+        static const Symbolic x("x"), y("y");
+        static const Symbolic F = (x - 2)*(x - 2) + (y - x*x)*(y - x*x);
 
-        static void init() {
-            F = (x - 2)*(x - 2) + (y - x*x)*(y - x*x);
-        }
 
         static Symbolic getFuncValue(Symbolic func, Point at)
         {
             Symbolic result = func.subst(x == at.x);
             result = result.subst(y == at.y);
 
-            //cout<<"getFuncValue: "<<result<<"\n";
             return result;
         }
 
@@ -138,47 +158,106 @@ namespace examples {
             return hessian;
         }
 
+        static double toDouble(Symbolic sym)
+        {
+            return static_cast<double>(sym);
+        }
+
 
         void NewtonRaphson() {
-            init();
-//            getFuncValue(F, StartPoint);
-//            getGradient(F);
-//            getGradientValue(F, StartPoint);
-//            getHessian(F);
-//            getHessianValue(F, StartPoint);
 
-            for(int iterator = 0; iterator <= 2; iterator++) {
+            Point point = StartPoint;
+
+            for(int iterator = 0; iterator <= MaxCycleIterations; iterator++) {
                 cout<<"Iteration: "<<iterator<<"\n";
 
-                Symbolic f = getFuncValue(F, StartPoint);
-                Gradient g = getGradientValue(F, StartPoint);
+                Symbolic f = getFuncValue(F, point);
+                Gradient g = getGradientValue(F, point);
+                Hessian H = getHessianValue(F, point);
 
-                Hessian H = getHessianValue(F, StartPoint);
+                Point newpoint;
+                newpoint = point.matrix.transpose() - (H.matrix.inverse()) * g.matrix.transpose();
 
-                Point xnew;
-                xnew.matrix = StartPoint.matrix.transpose() - (H.matrix.inverse()) * g.matrix.transpose();
-                xnew.x = static_cast<double>(xnew.matrix.row(0));
-                xnew.y = static_cast<double>(xnew.matrix.row(1));
+                Symbolic fnew = getFuncValue(F, newpoint);
+                Gradient gnew = getGradientValue(F, newpoint);
 
-
-                Symbolic fnew = getFuncValue(F, xnew);
-                Gradient gnew = getGradientValue(F, xnew);
-
-                double dx = static_cast<double>(gnew.dx);
-                double dy = static_cast<double>(gnew.dy);
+                double dx = toDouble(gnew.dx), dy = toDouble(gnew.dy);
 
                 if((dx*dx + dy*dy) > Precision) {
-                    StartPoint.x = xnew.x;
-                    StartPoint.y = xnew.y;
-                    StartPoint.matrix = xnew.matrix.transpose();
+                    point = newpoint;
                 }
                 else {
                     cout << "Newton and Raphson method reach solution with accuracy and terminated in " << iterator
                          << ". iteration \n\n";
-                    cout << "Locally minimum of function have been found at [" << xnew.x << " " << xnew.y << "]\n\n";
+                    cout << "Locally minimum of function have been found at [" << newpoint.x << " " << newpoint.y << "]\n\n";
                     break;
                 }
             }
         }
+
+        void LevenbergMarquardt()
+        {
+            float alfa= 8;
+            float c   = 4;
+            Point point = StartPoint;
+
+            for(int iterator = 0; iterator <= MaxCycleIterations; iterator++) {
+                cout<<"Iteration: "<<iterator<<"\n";
+
+                Symbolic f = getFuncValue(F, point);
+                Gradient g = getGradientValue(F, point);
+                Hessian H = getHessianValue(F, point);
+
+                Symbolic eye = ((static_cast<Symbolic>(alfa),    0),
+                                (   0, static_cast<Symbolic>(alfa)));
+
+                Point newpoint;
+                newpoint = point.matrix.transpose() - (H.matrix + eye).inverse() * g.matrix.transpose();
+
+                Symbolic fnew = getFuncValue(F, newpoint);
+                Gradient gnew = getGradientValue(F, newpoint);
+
+                if(toDouble(fnew) < toDouble(f)) {
+                    alfa = alfa/c;
+
+                    if ((toDouble(gnew.dx)*toDouble(gnew.dx) + toDouble(gnew.dy)*toDouble(gnew.dy)) > Precision) {
+                        point = newpoint;
+                    } else {
+                        cout << "Levenberg Marquardt method reach solution with accuracy and terminated in " << iterator
+                             << ". iteration \n\n";
+                        cout << "Locally minimum of function have been found at [" << newpoint.x << " " << newpoint.y
+                             << "]\n\n";
+                        break;
+                    }
+                }
+                else {
+                    alfa = alfa/c;
+                }
+            }
+        }
+
+        static void visualisations() {
+            std::string funkcia = "((x - 2)*(x - 2) + (y - x*x)*(y - x*x))";
+            Gnuplot gp("gnuplot -persist");
+
+            gp<<("set xrange [-5:5]\n");
+            gp<<("set yrange [-5:5]\n");
+            gp<<("set pm3d at b\n");
+            gp<<("set ticslevel 0.8\n");
+            gp<<("set isosample 40,40\n");
+            gp<<("set cntrparam levels 15\n");
+            gp<<("set samples 20\n");
+            gp<<("set isosamples 21\n");
+            gp<<("set view 60, 30, 0.85, 1.1\n");
+            gp<<("set key at screen 1.0, 0.9\n");
+            gp<<("set style textbox opaque noborder margins 0.5, 0.5\n");
+            gp<<("set cntrparam levels incr -10,1,10\n");
+            gp<<("set contour\n");
+
+            gp<<("splot ");
+            gp<<((funkcia));
+            gp<<("\n");
+        }
+
     }
 }
